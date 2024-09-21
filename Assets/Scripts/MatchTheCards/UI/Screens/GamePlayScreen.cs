@@ -1,6 +1,4 @@
 using System;
-using UnityEngine;
-
 public class GamePlayScreen : UIElement
 {
     public override void Show(Action callback = null)

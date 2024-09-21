@@ -35,6 +35,20 @@ public class UIAnimator : MonoBehaviour
             animation.Hide(onHideComplete);
         }
     }
+    public void ShowCustomAnimation(UIAnimations customeAnimation,Action onCompleteCallback = null)
+    {
+        customeAnimation.Show(() =>
+        {
+            onCompleteCallback?.Invoke();
+        });
+    }
+    public void HideCustomAnimation(UIAnimations uIAnimations,Action onCompleteCallback = null)
+    {
+        uIAnimations.Hide(() =>
+        {
+            onCompleteCallback?.Invoke();
+        });
+    }
     private void onShowComplete()
     {
         showanimCount--;

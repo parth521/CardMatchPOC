@@ -45,6 +45,7 @@ public abstract class UIElement : MonoBehaviour
     }
     public virtual void Hide(Action callback = null)
     {
+        canvasGroup.blocksRaycasts = false;
         if (animator != null)
         {
             animator.HideUIAnimation(() =>
@@ -55,7 +56,6 @@ public abstract class UIElement : MonoBehaviour
         }
         else
         {
-            canvasGroup.blocksRaycasts = false;
             canvas.enabled = false;
             callback?.Invoke();
         }
@@ -71,7 +71,6 @@ public abstract class UIElement : MonoBehaviour
     }
     public virtual void onHideComplete()
     {
-        canvasGroup.blocksRaycasts = false;
         canvas.enabled = false;
     }
 }
