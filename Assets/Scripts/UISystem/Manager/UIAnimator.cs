@@ -19,7 +19,6 @@ public class UIAnimator : MonoBehaviour
     }
     public void ShowUIAnimation(Action onCompleteCallback = null)
     {
-
         showanimCount = animations.Count;
         onAnimationShowComplete = onCompleteCallback;
         foreach (UIAnimations animation in animations)
@@ -39,10 +38,8 @@ public class UIAnimator : MonoBehaviour
     private void onShowComplete()
     {
         showanimCount--;
-        Debug.LogError("ChangeScreen1" + showanimCount);
         if (showanimCount == 0)
         {
-            Debug.LogError("==> ShowUIAnimation");
             onAnimationShowComplete?.Invoke();
         }
     }

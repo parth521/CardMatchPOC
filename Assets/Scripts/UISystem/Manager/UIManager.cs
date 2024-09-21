@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class UIManager : Singleton<UIManager>
 {
+    [SerializeField] private UIScreen initialScreen;
     [SerializeField] private List<UIElement> uiElements;
     private Stack<UIElement> screenQueue = new Stack<UIElement>();
     private void Start()
@@ -11,7 +12,7 @@ public class UIManager : Singleton<UIManager>
         {
             uiElement.HideDirectly();
         }
-        ShowScreen(UIScreen.SplashScreen);
+        ShowScreen(initialScreen);
     }
     public void RegisterUIElements(UIElement uIElement)
     {
