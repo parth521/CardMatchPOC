@@ -2,7 +2,8 @@ public enum UIScreen
 {
     GameTitleScreen,
     GamePlayScreen,
-    LoadingScreen
+    LoadingScreen,
+    ScoreCalculatorScreen
 }
 public enum AnimationType
 {

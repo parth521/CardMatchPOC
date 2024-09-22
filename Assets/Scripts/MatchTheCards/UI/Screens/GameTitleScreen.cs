@@ -5,11 +5,14 @@ public class GameTitleScreen : UIElement
     public override void Show(Action callback = null)
     {
         base.Show(callback);
-        Debug.Log("GameTitleScreen Show");
     }
     public override void Hide(Action callback = null)
     {
         base.Hide(callback);
+    }
+    public override void onShowComplete()
+    {
+        base.onShowComplete();
     }
     public void OnPlay()
     {

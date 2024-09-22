@@ -5,6 +5,8 @@ public class LevelActions : ScriptableObject
 {
 public Action<int> generateLevel;
 public Action onLevelComplete;
+public Action CalculateScore;
 public Action onProgressToNextLevel;
 public Action onLevelGenerated;
+public Action dispalyTilesOnLevelStart;
 }
