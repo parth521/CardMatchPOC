@@ -13,16 +13,12 @@ public class SlideYComponent : UIAnimations
     public override void Hide(Action callback = null)
     {
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x,showSlideY);
-        rectTransform.DOAnchorPosY(hideSlideY,duration).SetDelay(delay).SetEase(ease).OnComplete(() => {
-            callback?.Invoke();
-        });
+        PlayTween(rectTransform.DOAnchorPosY(hideSlideY, duration).SetDelay(hidedelay).SetEase(ease), callback);
     }
 
     public override void Show(Action callback = null)
     {
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x,hideSlideY);
-        rectTransform.DOAnchorPosY(showSlideY,duration).SetDelay(delay).SetEase(ease).OnComplete(() => {
-            callback?.Invoke();
-        });
+        PlayTween( rectTransform.DOAnchorPosY(showSlideY,duration).SetDelay(showdelay).SetEase(ease), callback);
     }
 }

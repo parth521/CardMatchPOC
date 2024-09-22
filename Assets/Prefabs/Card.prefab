@@ -89,6 +89,8 @@ GameObject:
   - component: {fileID: 3250457589663443957}
   - component: {fileID: 7693126067794861151}
   - component: {fileID: 7012979404820186944}
+  - component: {fileID: 3061426898012025313}
+  - component: {fileID: 3069841531675198599}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -182,8 +184,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+  pairIndex: 0
   secondaryImage: {fileID: 364177914632803139}
   flipAnimation: {fileID: 7012979404820186944}
+  matchAnimation: {fileID: 3061426898012025313}
 --- !u!114 &7012979404820186944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +201,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 0.3
-  delay: 0
+  showdelay: 0
+  hidedelay: 0.5
   ease: 1
   animationType: 1
   showRotation: 180
   hideRotation: 0
+--- !u!114 &3061426898012025313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486847128632072665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d432b9de5b7b4669b5eed06659dc889, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.3
+  showdelay: 0
+  hidedelay: 0
+  ease: 0
+  animationType: 1
+--- !u!225 &3069841531675198599
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486847128632072665}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

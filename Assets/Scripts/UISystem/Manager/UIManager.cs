@@ -54,7 +54,6 @@ public class UIManager : Singleton<UIManager>
 
             currentScreen.Hide(() =>
             {
-                Debug.LogError("==> ChangeScreen");
                 currentScreen = uiElements.Find(x => x.screenName == screen);
                 if (currentScreen != null)
                 {

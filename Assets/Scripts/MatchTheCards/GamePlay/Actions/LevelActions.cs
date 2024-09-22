@@ -4,4 +4,7 @@ using System;
 public class LevelActions : ScriptableObject
 {
 public Action<int> generateLevel;
+public Action onLevelComplete;
+public Action onProgressToNextLevel;
+public Action onLevelGenerated;
 }

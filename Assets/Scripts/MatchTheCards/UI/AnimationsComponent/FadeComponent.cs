@@ -12,16 +12,13 @@ public class FadeComponent : UIAnimations
     {
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = true;
-        canvasGroup.DOFade(1,duration).SetDelay(delay).SetEase(ease).OnComplete(() => {
-            callback?.Invoke();
-        });
+        PlayTween(
+        canvasGroup.DOFade(1, duration).SetDelay(showdelay).SetEase(ease),callback);
     }
     public override void Hide(Action callback = null)
     {
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = false;
-        canvasGroup.DOFade(0,duration).SetDelay(delay).SetEase(ease).OnComplete(() => {
-            callback?.Invoke();
-        });
+         PlayTween(canvasGroup.DOFade(0,duration).SetDelay(hidedelay).SetEase(ease),callback);
     }
 }

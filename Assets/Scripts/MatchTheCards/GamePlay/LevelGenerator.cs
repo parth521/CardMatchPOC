@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.UI; 
 public class LevelGenerator : MonoBehaviour
@@ -19,19 +18,17 @@ public class LevelGenerator : MonoBehaviour
     levelActions.generateLevel -= GenerateLevel;
    }
    private void GenerateLevel(int level) {
-      ResetLevel();
       currentLevelData = levelData.levelData[level];
       int grid = currentLevelData.rows * currentLevelData.columns;
-      List<Sprite> currentSprites= cardData.GetSprites(grid);
-      Debug.Log("Current Sprites Count: "+currentSprites.Count);
+      List<SpriteData> currentSprites= cardData.GetSprites(grid);
       gridLayout.constraintCount = currentLevelData.columns;
       CardPooler.Instance.Initialize(currentcontainer);
+      ResetLevel();
       AdjustCellSize();
       for (int cardIndex = 0; cardIndex < grid; cardIndex++)
       {
          Card card = CardPooler.Instance.GetCard();
-         Debug.Log(cardIndex+"Card Index: "+currentSprites[cardIndex]);
-         card.SetCard(cardIndex, currentSprites[cardIndex]);
+         card.SetCard(cardIndex, currentSprites[cardIndex].sprite, currentSprites[cardIndex].pairId);
          gameData.cards.Add(card);
       }
    }
@@ -40,8 +37,9 @@ public class LevelGenerator : MonoBehaviour
       foreach (Card card in gameData.cards)
       {
          CardPooler.Instance.ReturnCard(card);
+         card.ResetAnimation();
       }
-      gameData.cards.Clear();
+      gameData.Initialize();
    }
    private void AdjustCellSize()
    {
@@ -51,7 +49,8 @@ public class LevelGenerator : MonoBehaviour
       float cellHeight = cellWidth;
       gridLayout.cellSize = new Vector2(Mathf.RoundToInt(cellWidth), Mathf.RoundToInt(cellHeight));
    }
-   private void OnDestroy() {
-    gameData.cards.Clear();
+   private void OnDestroy()
+   {
+      gameData.Initialize();
    }
 }
