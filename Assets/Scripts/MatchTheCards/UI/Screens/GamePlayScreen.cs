@@ -1,16 +1,18 @@
 using System;
-using System.Collections;
 using UnityEngine;
+using TMPro;
 public class GamePlayScreen : UIElement
 {
     [SerializeField]private LevelActions levelActions;
     [SerializeField] private PlayerData playerData;
     [SerializeField] private GameData gameData;
+    [SerializeField] private TextMeshProUGUI scoretxt;
     public override void Show(Action callback = null)
     {
         base.Show(callback);
         levelActions.dispalyTilesOnLevelStart += ShowTiles;
         levelActions.onLevelComplete += OnLevelComplete;
+        levelActions.displayScore+=OnDisplayScore;
         levelActions.generateLevel?.Invoke(playerData.GetCurrentLevelData());
         ShowTiles(); 
     }
@@ -18,13 +20,13 @@ public class GamePlayScreen : UIElement
     {
         base.Hide(callback);
         levelActions.onLevelComplete -= OnLevelComplete;
-         levelActions.dispalyTilesOnLevelStart -= ShowTiles;
+        levelActions.dispalyTilesOnLevelStart -= ShowTiles;
+         levelActions.displayScore-=OnDisplayScore;
     }
     private void OnLevelComplete()
     {
         playerData.SetNextLevelData();
-        levelActions.CalculateScore?.Invoke();
-      //  UIManager.Instance.ShowScreen(UIScreen.LoadingScreen);
+        UIManager.Instance.ShowScreen(UIScreen.ScoreCalculatorScreen);
     }
     private void ShowTiles()
    {
@@ -44,4 +46,9 @@ public class GamePlayScreen : UIElement
    {
        gameData.isInSelection = false;
    }
+   private void OnDisplayScore(int score)
+   {
+        scoretxt.text= score.ToString();
+   }
+
 }

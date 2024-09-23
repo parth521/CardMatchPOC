@@ -1,6 +1,5 @@
 
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CardSelection : MonoBehaviour
@@ -9,6 +8,7 @@ public class CardSelection : MonoBehaviour
     [SerializeField] private GameData gameData;
     [SerializeField] private AudioData audioData;
     [SerializeField] private LevelActions levelActions;
+    
     private void OnEnable()
     {
         userInput.OnCardClick += OnCardClick;
@@ -42,14 +42,15 @@ public class CardSelection : MonoBehaviour
                 card2.Match(OnMatchComplete);
                 card1.isMatched = true;
                 card2.isMatched = true;
+                gameData.moves++;
                 AudioManager.Instance.PlayFX(audioData.cardMatch);
             }
             else
             {
-                //  Debug.LogError("Not Matched");
                 AudioManager.Instance.PlayFX(audioData.cardMismatch);
                 card1.FlipToHide(OnFlipHideComplete);
                 card2.FlipToHide(OnFlipHideComplete);
+                gameData.moves++;
             }
         }
     }

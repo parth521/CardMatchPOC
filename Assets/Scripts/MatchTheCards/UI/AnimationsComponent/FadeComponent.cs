@@ -4,6 +4,7 @@ using DG.Tweening;
 public class FadeComponent : UIAnimations
 {
     private CanvasGroup canvasGroup;
+    private LevelActions levelActions;
     public override void Awake() {
         base.Awake();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -19,6 +20,6 @@ public class FadeComponent : UIAnimations
     {
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = false;
-         PlayTween(canvasGroup.DOFade(0,duration).SetDelay(hidedelay).SetEase(ease),callback);
+        PlayTween(canvasGroup.DOFade(0,duration).SetDelay(hidedelay).SetEase(ease),callback);
     }
 }

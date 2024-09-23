@@ -31,7 +31,5 @@ public class LoadingScreen : UIElement
     {
         Hide();
     }
-
-
 }
 
